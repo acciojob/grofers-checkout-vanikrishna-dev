@@ -19,7 +19,7 @@ const getSum = () => {
     tr.appendChild(td);
 
     const table = document.querySelector("table");
-    table.appendChild(tr);
+    document.getElementById("ans").innerText = totalPrice;
 
 };
 
