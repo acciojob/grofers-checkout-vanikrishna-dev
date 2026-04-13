@@ -4,24 +4,32 @@ document.body.appendChild(getSumBtn);
 
 const getSum = () => {
 	let totalPrice = 0;
-	const prices = document.querySelectorAll(".price")
-	
+
+	const prices = document.querySelectorAll(".prices");
+
 	prices.forEach(item => {
-        totalPrice += parseFloat(item.innerText);
+        let value = item.innerText.trim();
+
+        let numbers = value.match(/\d+/g);
+        let lastNumber = numbers ? numbers[numbers.length - 1] : 0;
+
+        totalPrice += parseFloat(lastNumber);
     });
 
-	const tr = document.createElement("tr");
-    const td = document.createElement("td");
+    const existing = document.querySelector(".total-row");
+    if (existing) existing.remove();
 
-	td.colSpan = 2;
+    const tr = document.createElement("tr");
+    tr.classList.add("total-row");
+
+    const td = document.createElement("td");
+    td.colSpan = 2;
     td.innerText = "Total Price: Rs " + totalPrice;
 
     tr.appendChild(td);
 
     const table = document.querySelector("table");
-    document.getElementById("ans").innerText = totalPrice;
-
+    table.appendChild(tr);
 };
 
 getSumBtn.addEventListener("click", getSum);
-
