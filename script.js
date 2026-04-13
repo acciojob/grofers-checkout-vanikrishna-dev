@@ -9,11 +9,9 @@ const getSum = () => {
 
 	prices.forEach(item => {
         let value = item.innerText.trim();
+		let cleanValue = value.slice(-3);
 
-        let numbers = value.match(/\d+/g);
-        let lastNumber = numbers ? numbers[numbers.length - 1] : 0;
-
-        totalPrice += parseFloat(lastNumber);
+		totalPrice += parseFloat(cleanValue) || 0;
     });
 
     const existing = document.querySelector(".total-row");
