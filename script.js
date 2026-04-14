@@ -5,29 +5,15 @@ document.body.appendChild(getSumBtn);
 const getSum = () => {
 	let totalPrice = 0;
 
-	const prices = document.querySelectorAll(".prices");
+	const price = document.querySelectorAll(".price");
 
-	prices.forEach(item => {
-        let value = item.innerText.trim();
-		let cleanValue = value.slice(-3);
-
-		totalPrice += parseFloat(cleanValue) || 0;
+	price.forEach(item => {
+        totalPrice += parseInt(item.innerText);
     });
 
-    const existing = document.querySelector(".total-row");
-    if (existing) existing.remove();
-
-    const tr = document.createElement("tr");
-    tr.classList.add("total-row");
-
-    const td = document.createElement("td");
-    td.colSpan = 2;
-    td.innerText = "Total Price: Rs " + totalPrice;
-
-    tr.appendChild(td);
-
-    const table = document.querySelector("table");
-    table.appendChild(tr);
+	document.getElementById("ans").innerText = totalPrice;
+  
 };
 
 getSumBtn.addEventListener("click", getSum);
+
