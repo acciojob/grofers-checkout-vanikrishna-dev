@@ -2,18 +2,15 @@ const getSumBtn = document.createElement("button");
 getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
-const getSum = () => {
-	let totalPrice = 0;
+prices.forEach(item => {
+    let value = item.innerText.trim();
 
-	const price = document.querySelectorAll(".price");
+    let nums = value.match(/\d+/g);
 
-	price.forEach(item => {
-        totalPrice += parseInt(item.innerText);
-    });
+    let finalValue = nums ? nums[nums.length - 1] : 0;
 
-	document.getElementById("ans").innerText = totalPrice;
-  
-};
+    totalPrice += parseInt(finalValue);
+});
 
 getSumBtn.addEventListener("click", getSum);
 
